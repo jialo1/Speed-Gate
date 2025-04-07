@@ -1,0 +1,176 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modèle Utilisateur
+model User {
+  id              String         @id @default(uuid())
+  name            String
+  email           String         @unique
+  phone           String
+  password        String
+  loyaltyPoints   Int            @default(0)
+  level           UserLevel      @default(BRONZE)
+  nextLevelPoints Int
+  profileImage    String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  trips           Trip[]
+  notifications   Notification[]
+}
+
+// Modèle Chauffeur
+model Driver {
+  id                String    @id @default(uuid())
+  name              String
+  phone             String
+  email             String    @unique
+  password          String
+  rating            Float     @default(0)
+  totalTrips        Int       @default(0)
+  isAvailable       Boolean   @default(true)
+  profileImage      String?
+  currentLocationId String?   @unique
+  vehicleId         String?   @unique
+  currentLocation   Location? @relation(fields: [currentLocationId], references: [id])
+  vehicle           Vehicle?  @relation(fields: [vehicleId], references: [id])
+  trips             Trip[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+// Modèle Véhicule
+model Vehicle {
+  id            String    @id @default(uuid())
+  type          VehicleType
+  model         String
+  licensePlate  String    @unique
+  capacity      Int
+  features      String[]
+  image         String?
+  driver        Driver?
+  trips         Trip[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// Modèle Trajet
+model Trip {
+  id                String        @id @default(uuid())
+  userId           String
+  driverId         String
+  vehicleId        String
+  pickupLocationId String
+  dropLocationId   String
+  status           TripStatus    @default(PENDING)
+  pickupLocation   Location      @relation("PickupLocation", fields: [pickupLocationId], references: [id])
+  dropoffLocation  Location      @relation("DropoffLocation", fields: [dropLocationId], references: [id])
+  scheduledTime    DateTime
+  actualPickupTime DateTime?
+  actualDropoffTime DateTime?
+  price            Float
+  paymentMethod    PaymentMethod
+  paymentStatus    PaymentStatus @default(PENDING)
+  rating           Float?
+  comment          String?
+  user             User          @relation(fields: [userId], references: [id])
+  driver           Driver        @relation(fields: [driverId], references: [id])
+  vehicle          Vehicle       @relation(fields: [vehicleId], references: [id])
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+// Modèle Promotion
+model Promotion {
+  id          String    @id @default(uuid())
+  title       String
+  description String
+  type        PromotionType
+  value       Float
+  conditions  Json
+  isActive    Boolean   @default(true)
+  validUntil  DateTime
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Modèle Notification
+model Notification {
+  id        String    @id @default(uuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean   @default(false)
+  user      User      @relation(fields: [userId], references: [id])
+  createdAt DateTime  @default(now())
+}
+
+// Modèle Location (pour les coordonnées GPS)
+model Location {
+  id              String    @id @default(uuid())
+  address         String
+  lat             Float
+  lng             Float
+  driver          Driver?
+  pickupTrips     Trip[]    @relation("PickupLocation")
+  dropoffTrips    Trip[]    @relation("DropoffLocation")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Enums
+enum UserLevel {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
+
+enum VehicleType {
+  STANDARD
+  CONFORT
+  MINIBUS
+}
+
+enum TripStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  WAVE
+  ORANGE_MONEY
+  CASH
+  WHATSAPP_INVOICE
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+}
+
+enum PromotionType {
+  PERCENTAGE
+  FIXED
+  FREE_RIDE
+}
+
+enum NotificationType {
+  TRIP_UPDATE
+  PROMOTION
+  PAYMENT
+  SYSTEM
+} 
