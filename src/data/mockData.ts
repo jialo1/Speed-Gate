@@ -8,7 +8,7 @@ export const mockUser: User = {
   loyaltyPoints: 250,
   level: 'Bronze',
   nextLevelPoints: 500,
-  profileImage: '/images/user-avatar.jpg'
+  profileImage: '/images/user-avatar.jpg',
 };
 
 export const mockDrivers: Driver[] = [
@@ -26,13 +26,13 @@ export const mockDrivers: Driver[] = [
       licensePlate: 'AB-123-CD',
       capacity: 4,
       features: ['Climatisation', 'WiFi', 'Chargement USB'],
-      image: '/images/mercedes-e.jpg'
+      image: '/images/mercedes-e.jpg',
     },
     isAvailable: true,
     currentLocation: {
       lat: 14.7167,
-      lng: -17.4677
-    }
+      lng: -17.4677,
+    },
   },
   {
     id: 'driver-2',
@@ -48,14 +48,14 @@ export const mockDrivers: Driver[] = [
       licensePlate: 'EF-456-GH',
       capacity: 4,
       features: ['Climatisation', 'Chargement USB'],
-      image: '/images/toyota-corolla.jpg'
+      image: '/images/toyota-corolla.jpg',
     },
     isAvailable: true,
     currentLocation: {
       lat: 14.6928,
-      lng: -17.4477
-    }
-  }
+      lng: -17.4477,
+    },
+  },
 ];
 
 export const mockTrips: Trip[] = [
@@ -68,12 +68,12 @@ export const mockTrips: Trip[] = [
     pickupLocation: {
       address: 'Aéroport Blaise Diagne',
       lat: 14.7397,
-      lng: -17.4902
+      lng: -17.4902,
     },
     dropoffLocation: {
       address: 'Hôtel Terrou-Bi',
       lat: 14.6928,
-      lng: -17.4477
+      lng: -17.4477,
     },
     scheduledTime: '2024-03-15T14:30:00Z',
     actualPickupTime: '2024-03-15T14:35:00Z',
@@ -84,7 +84,7 @@ export const mockTrips: Trip[] = [
     rating: 4.8,
     comment: 'Excellent service, chauffeur très professionnel',
     createdAt: '2024-03-15T12:00:00Z',
-    updatedAt: '2024-03-15T15:15:00Z'
+    updatedAt: '2024-03-15T15:15:00Z',
   },
   {
     id: 'trip-2',
@@ -95,12 +95,12 @@ export const mockTrips: Trip[] = [
     pickupLocation: {
       address: 'Gare Routière',
       lat: 14.7167,
-      lng: -17.4677
+      lng: -17.4677,
     },
     dropoffLocation: {
       address: 'Université Cheikh Anta Diop',
       lat: 14.6928,
-      lng: -17.4477
+      lng: -17.4477,
     },
     scheduledTime: '2024-03-10T08:00:00Z',
     actualPickupTime: '2024-03-10T08:05:00Z',
@@ -111,8 +111,8 @@ export const mockTrips: Trip[] = [
     rating: 5.0,
     comment: 'Ponctuel et très agréable',
     createdAt: '2024-03-09T20:00:00Z',
-    updatedAt: '2024-03-10T08:30:00Z'
-  }
+    updatedAt: '2024-03-10T08:30:00Z',
+  },
 ];
 
 export const mockPromotions: Promotion[] = [
@@ -124,9 +124,9 @@ export const mockPromotions: Promotion[] = [
     value: 10,
     conditions: {
       minTrips: 5,
-      validUntil: '2024-04-30T23:59:59Z'
+      validUntil: '2024-04-30T23:59:59Z',
     },
-    isActive: true
+    isActive: true,
   },
   {
     id: 'promo-2',
@@ -135,10 +135,10 @@ export const mockPromotions: Promotion[] = [
     type: 'percentage',
     value: 15,
     conditions: {
-      validUntil: '2024-04-15T23:59:59Z'
+      validUntil: '2024-04-15T23:59:59Z',
     },
-    isActive: true
-  }
+    isActive: true,
+  },
 ];
 
 export const mockNotifications: Notification[] = [
@@ -149,7 +149,7 @@ export const mockNotifications: Notification[] = [
     title: 'Trajet confirmé',
     message: 'Votre trajet vers Hôtel Terrou-Bi a été confirmé',
     isRead: true,
-    createdAt: '2024-03-15T12:05:00Z'
+    createdAt: '2024-03-15T12:05:00Z',
   },
   {
     id: 'notif-2',
@@ -158,8 +158,8 @@ export const mockNotifications: Notification[] = [
     title: 'Nouvelle promotion',
     message: 'Profitez de 10% de réduction sur votre 5ème trajet',
     isRead: false,
-    createdAt: '2024-03-14T10:00:00Z'
-  }
+    createdAt: '2024-03-14T10:00:00Z',
+  },
 ];
 
 export const appSettings: AppSettings = {
@@ -169,12 +169,12 @@ export const appSettings: AppSettings = {
   maxPassengers: {
     standard: 4,
     comfort: 4,
-    minibus: 8
+    minibus: 8,
   },
   supportPhone: '+221 77 123 45 67',
   supportWhatsApp: '+221 77 123 45 67',
   businessHours: {
     start: '06:00',
-    end: '22:00'
-  }
-}; 
+    end: '22:00',
+  },
+};

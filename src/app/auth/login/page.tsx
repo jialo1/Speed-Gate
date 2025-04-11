@@ -1,32 +1,32 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import Navbar from '@/components/Navbar'
-import Link from 'next/link'
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import Navbar from '@/components/Navbar';
+import Link from 'next/link';
 
 const fadeIn = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.5 }
-}
+  transition: { duration: 0.5 },
+};
 
 export default function Login() {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
-  })
+    password: '',
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // TODO: Implémenter la logique de connexion
-    console.log('Données du formulaire:', formData)
-  }
+    console.log('Données du formulaire:', formData);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-12">
         <motion.div
           initial="initial"
@@ -35,12 +35,8 @@ export default function Login() {
           className="max-w-md mx-auto"
         >
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              Connexion
-            </h1>
-            <p className="text-gray-600">
-              Connectez-vous à votre compte SpeedGate
-            </p>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">Connexion</h1>
+            <p className="text-gray-600">Connectez-vous à votre compte SpeedGate</p>
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-sm">
@@ -86,16 +82,15 @@ export default function Login() {
                 </label>
               </div>
 
-              <Link href="/auth/forgot-password" className="text-sm text-blue-600 hover:text-blue-700">
+              <Link
+                href="/auth/forgot-password"
+                className="text-sm text-blue-600 hover:text-blue-700"
+              >
                 Mot de passe oublié ?
               </Link>
             </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary w-full mb-4"
-              aria-label="Se connecter"
-            >
+            <button type="submit" className="btn btn-primary w-full mb-4" aria-label="Se connecter">
               Se connecter
             </button>
 
@@ -109,5 +104,5 @@ export default function Login() {
         </motion.div>
       </main>
     </div>
-  )
-} 
+  );
+}

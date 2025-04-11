@@ -1,21 +1,21 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Link from 'next/link'
-import { FaCar, FaUser, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { FaCar, FaUser, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isPagesOpen, setIsPagesOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPagesOpen, setIsPagesOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const togglePages = () => {
-    setIsPagesOpen(!isPagesOpen)
-  }
+    setIsPagesOpen(!isPagesOpen);
+  };
 
   return (
     <nav className="bg-white shadow-lg">
@@ -32,13 +32,22 @@ export default function Navbar() {
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/"
+              className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+            >
               Accueil
             </Link>
-            <Link href="/reservation" className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/reservation"
+              className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+            >
               Réserver
             </Link>
-            <Link href="/tracking" className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/tracking"
+              className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+            >
               Suivre
             </Link>
             <div className="relative">
@@ -47,7 +56,9 @@ export default function Navbar() {
                 className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium flex items-center"
               >
                 Pages
-                <FaChevronDown className={`ml-1 transition-transform ${isPagesOpen ? 'transform rotate-180' : ''}`} />
+                <FaChevronDown
+                  className={`ml-1 transition-transform ${isPagesOpen ? 'transform rotate-180' : ''}`}
+                />
               </button>
               <AnimatePresence>
                 {isPagesOpen && (
@@ -112,7 +123,10 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
-            <Link href="/account" className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/account"
+              className="text-gray-600 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+            >
               Mon Compte
             </Link>
           </div>
@@ -170,7 +184,9 @@ export default function Navbar() {
                   className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50 flex items-center justify-between"
                 >
                   Pages
-                  <FaChevronDown className={`transition-transform ${isPagesOpen ? 'transform rotate-180' : ''}`} />
+                  <FaChevronDown
+                    className={`transition-transform ${isPagesOpen ? 'transform rotate-180' : ''}`}
+                  />
                 </button>
                 <AnimatePresence>
                   {isPagesOpen && (
@@ -184,8 +200,8 @@ export default function Navbar() {
                         href="/driver"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Profil Chauffeur
@@ -194,8 +210,8 @@ export default function Navbar() {
                         href="/promotions"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Promotions
@@ -204,8 +220,8 @@ export default function Navbar() {
                         href="/support"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Support
@@ -214,8 +230,8 @@ export default function Navbar() {
                         href="/feedback"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Feedback
@@ -224,8 +240,8 @@ export default function Navbar() {
                         href="/confirmation"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Confirmation
@@ -234,8 +250,8 @@ export default function Navbar() {
                         href="/payment"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Paiement
@@ -244,8 +260,8 @@ export default function Navbar() {
                         href="/tracking"
                         className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50"
                         onClick={() => {
-                          setIsMenuOpen(false)
-                          setIsPagesOpen(false)
+                          setIsMenuOpen(false);
+                          setIsPagesOpen(false);
                         }}
                       >
                         Tracking
@@ -266,5 +282,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </nav>
-  )
-} 
+  );
+}

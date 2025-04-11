@@ -22,18 +22,20 @@ src/
 
 ## Prérequis
 
-- Node.js 18+ 
+- Node.js 18+
 - npm ou yarn
 
 ## Installation
 
 1. Cloner le repository
+
 ```bash
 git clone [URL_DU_REPO]
 cd speedgate
 ```
 
 2. Installer les dépendances
+
 ```bash
 npm install
 # ou
@@ -41,6 +43,7 @@ yarn install
 ```
 
 3. Lancer l'application en mode développement
+
 ```bash
 npm run dev
 # ou
@@ -63,4 +66,4 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou un
 
 ## Licence
 
-MIT 
+MIT

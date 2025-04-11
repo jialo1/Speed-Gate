@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import React from 'react'
-import Navbar from '@/components/Navbar'
-import { FaTicketAlt, FaClock, FaCheckCircle } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React from 'react';
+import Navbar from '@/components/Navbar';
+import { FaTicketAlt, FaClock, FaCheckCircle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Promotions() {
   const activePromotions = [
@@ -16,8 +16,8 @@ export default function Promotions() {
       conditions: [
         'Valable pour les nouveaux utilisateurs',
         'Minimum de 5000 FCFA de trajet',
-        'Non cumulable avec d\'autres promotions'
-      ]
+        "Non cumulable avec d'autres promotions",
+      ],
     },
     {
       id: 'PROMO-002',
@@ -28,8 +28,8 @@ export default function Promotions() {
       conditions: [
         'Valable après 4 trajets effectués',
         'Applicable sur tous les types de véhicules',
-        'Non cumulable avec d\'autres promotions'
-      ]
+        "Non cumulable avec d'autres promotions",
+      ],
     },
     {
       id: 'PROMO-003',
@@ -40,29 +40,27 @@ export default function Promotions() {
       conditions: [
         'Valable uniquement les samedis et dimanches',
         'Minimum de 8000 FCFA de trajet',
-        'Non cumulable avec d\'autres promotions'
-      ]
-    }
-  ]
+        "Non cumulable avec d'autres promotions",
+      ],
+    },
+  ];
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
+    const date = new Date(dateString);
     return date.toLocaleDateString('fr-FR', {
       day: 'numeric',
       month: 'long',
-      year: 'numeric'
-    })
-  }
+      year: 'numeric',
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-8">
-            Promotions
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-8">Promotions</h1>
 
           <div className="space-y-6">
             {activePromotions.map((promo) => (
@@ -75,12 +73,8 @@ export default function Promotions() {
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h2 className="text-xl font-semibold text-gray-800">
-                        {promo.title}
-                      </h2>
-                      <p className="text-gray-600 mt-1">
-                        {promo.description}
-                      </p>
+                      <h2 className="text-xl font-semibold text-gray-800">{promo.title}</h2>
+                      <p className="text-gray-600 mt-1">{promo.description}</p>
                     </div>
                     <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                       {promo.code}
@@ -93,9 +87,7 @@ export default function Promotions() {
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="font-medium text-gray-800">
-                      Conditions d'utilisation :
-                    </h3>
+                    <h3 className="font-medium text-gray-800">Conditions d'utilisation :</h3>
                     <ul className="space-y-2">
                       {promo.conditions.map((condition, index) => (
                         <li key={index} className="flex items-start">
@@ -112,7 +104,7 @@ export default function Promotions() {
                     className="mt-6 w-full p-4 bg-blue-500 text-white rounded-lg font-medium"
                     onClick={() => {
                       // Logique de copie du code promo
-                      navigator.clipboard.writeText(promo.code)
+                      navigator.clipboard.writeText(promo.code);
                     }}
                   >
                     Copier le code promo
@@ -135,9 +127,7 @@ export default function Promotions() {
                 <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center font-medium mr-3">
                   1
                 </span>
-                <span className="text-gray-600">
-                  Copiez le code promo de votre choix
-                </span>
+                <span className="text-gray-600">Copiez le code promo de votre choix</span>
               </li>
               <li className="flex items-start">
                 <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center font-medium mr-3">
@@ -152,7 +142,8 @@ export default function Promotions() {
                   3
                 </span>
                 <span className="text-gray-600">
-                  Collez le code promo dans le champ prévu à cet effet avant de finaliser votre réservation
+                  Collez le code promo dans le champ prévu à cet effet avant de finaliser votre
+                  réservation
                 </span>
               </li>
             </ol>
@@ -160,5 +151,5 @@ export default function Promotions() {
         </div>
       </main>
     </div>
-  )
-} 
+  );
+}

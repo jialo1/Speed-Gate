@@ -1,65 +1,61 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import { FaMobileAlt, FaMoneyBillWave, FaWhatsapp } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import { FaMobileAlt, FaMoneyBillWave, FaWhatsapp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Payment() {
-  const [selectedMethod, setSelectedMethod] = useState('')
+  const [selectedMethod, setSelectedMethod] = useState('');
 
   const paymentMethods = [
     {
       id: 'orange_money',
       name: 'Orange Money',
       icon: FaMobileAlt,
-      description: 'Paiement via votre compte Orange Money Sénégal'
+      description: 'Paiement via votre compte Orange Money Sénégal',
     },
     {
       id: 'wave',
       name: 'Wave',
       icon: FaMoneyBillWave,
-      description: 'Paiement mobile rapide et sécurisé'
+      description: 'Paiement mobile rapide et sécurisé',
     },
     {
       id: 'free_money',
       name: 'Free Money',
       icon: FaMobileAlt,
-      description: 'Paiement via votre compte Free Money'
+      description: 'Paiement via votre compte Free Money',
     },
     {
       id: 'cash',
       name: 'Espèces',
       icon: FaMoneyBillWave,
-      description: 'Paiement en espèces au chauffeur (FCFA)'
+      description: 'Paiement en espèces au chauffeur (FCFA)',
     },
     {
       id: 'whatsapp',
       name: 'WhatsApp',
       icon: FaWhatsapp,
-      description: 'Recevez votre facture sur WhatsApp'
-    }
-  ]
+      description: 'Recevez votre facture sur WhatsApp',
+    },
+  ];
 
   const handlePayment = () => {
     // Logique de paiement à implémenter
-    console.log('Méthode de paiement sélectionnée:', selectedMethod)
-  }
+    console.log('Méthode de paiement sélectionnée:', selectedMethod);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-8">
-            Paiement
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-8">Paiement</h1>
 
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              Détails de la facture
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Détails de la facture</h2>
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span className="text-gray-600">Trajet</span>
@@ -116,9 +112,7 @@ export default function Payment() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={`w-full mt-6 py-3 px-4 rounded-lg text-white font-medium ${
-                selectedMethod
-                  ? 'bg-blue-500 hover:bg-blue-600'
-                  : 'bg-gray-400 cursor-not-allowed'
+                selectedMethod ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'
               }`}
               onClick={handlePayment}
               disabled={!selectedMethod}
@@ -129,5 +123,5 @@ export default function Payment() {
         </div>
       </main>
     </div>
-  )
-} 
+  );
+}

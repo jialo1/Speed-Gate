@@ -1,9 +1,23 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'
-import Navbar from '@/components/Navbar'
-import { FaPhone, FaWhatsapp, FaTimes, FaCar, FaUser, FaClock, FaMapMarkerAlt, FaInfoCircle, FaMoneyBillWave, FaMobileAlt, FaFileInvoice, FaStar, FaHistory } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import {
+  FaPhone,
+  FaWhatsapp,
+  FaTimes,
+  FaCar,
+  FaUser,
+  FaClock,
+  FaMapMarkerAlt,
+  FaInfoCircle,
+  FaMoneyBillWave,
+  FaMobileAlt,
+  FaFileInvoice,
+  FaStar,
+  FaHistory,
+} from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 // Données de test pour le chauffeur
 const driverData = {
@@ -15,24 +29,24 @@ const driverData = {
   estimatedArrival: '5 min',
   currentLocation: {
     lat: 48.8566,
-    lng: 2.3522
+    lng: 2.3522,
   },
   destination: {
     lat: 48.8584,
-    lng: 2.2945
-  }
-}
+    lng: 2.2945,
+  },
+};
 
 export default function Tracking() {
-  const [showCancelModal, setShowCancelModal] = useState(false)
-  const [cancelReason, setCancelReason] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(5) // en minutes
-  const [showPaymentOptions, setShowPaymentOptions] = useState(false)
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('')
-  const [showRating, setShowRating] = useState(false)
-  const [rating, setRating] = useState(0)
-  const [comment, setComment] = useState('')
+  const [showCancelModal, setShowCancelModal] = useState(false);
+  const [cancelReason, setCancelReason] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(5); // en minutes
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+  const [showRating, setShowRating] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
   const [tripHistory, setTripHistory] = useState([
     {
       id: 1,
@@ -41,7 +55,7 @@ export default function Tracking() {
       to: 'Hôtel Terrou-Bi',
       driver: 'Jean Dupont',
       rating: 4.8,
-      price: '15 000 FCFA'
+      price: '15 000 FCFA',
     },
     {
       id: 2,
@@ -50,59 +64,59 @@ export default function Tracking() {
       to: 'Université Cheikh Anta Diop',
       driver: 'Marie Fall',
       rating: 5.0,
-      price: '8 000 FCFA'
-    }
-  ])
+      price: '8 000 FCFA',
+    },
+  ]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 0) return 0
-        return prev - 1
-      })
-    }, 60000) // Mise à jour toutes les minutes
+      setTimeLeft((prev) => {
+        if (prev <= 0) return 0;
+        return prev - 1;
+      });
+    }, 60000); // Mise à jour toutes les minutes
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   const handleCancel = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     // Simulation d'un appel API
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsLoading(false)
-    setShowCancelModal(false)
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsLoading(false);
+    setShowCancelModal(false);
     // Redirection vers la page d'accueil
-    window.location.href = '/'
-  }
+    window.location.href = '/';
+  };
 
   const handlePaymentSelection = (method: string) => {
-    setSelectedPaymentMethod(method)
+    setSelectedPaymentMethod(method);
     // Simuler le traitement du paiement
-    setIsLoading(true)
+    setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false)
+      setIsLoading(false);
       // Rediriger vers la page d'accueil après le paiement
-      window.location.href = '/'
-    }, 2000)
-  }
+      window.location.href = '/';
+    }, 2000);
+  };
 
   const handleRatingSubmit = () => {
     // Simuler l'envoi de l'avis
-    setIsLoading(true)
+    setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false)
+      setIsLoading(false);
       // Rediriger vers la page d'accueil
-      window.location.href = '/'
-    }, 2000)
-  }
+      window.location.href = '/';
+    }, 2000);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-2xl font-bold text-gray-800 mb-6"
@@ -111,7 +125,7 @@ export default function Tracking() {
           </motion.h1>
 
           {/* Carte statique avec animation */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -119,14 +133,14 @@ export default function Tracking() {
           >
             <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
               <div className="text-center">
-                <motion.div 
-                  animate={{ 
+                <motion.div
+                  animate={{
                     y: [0, -10, 0],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 2,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: 'easeInOut',
                   }}
                   className="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center"
                 >
@@ -137,15 +151,15 @@ export default function Tracking() {
               </div>
             </div>
             {/* Indicateur de position du chauffeur */}
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 x: [0, 10, 0],
-                y: [0, -10, 0]
+                y: [0, -10, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: 'easeInOut',
               }}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             >
@@ -155,7 +169,7 @@ export default function Tracking() {
               </div>
             </motion.div>
             {/* Indicateur de destination */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
@@ -169,7 +183,7 @@ export default function Tracking() {
           </motion.div>
 
           {/* Informations du chauffeur */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -177,7 +191,7 @@ export default function Tracking() {
           >
             <div className="flex items-center space-x-4 mb-4">
               <div className="relative">
-                <motion.div 
+                <motion.div
                   whileHover={{ scale: 1.05 }}
                   className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center"
                 >
@@ -189,7 +203,9 @@ export default function Tracking() {
               </div>
               <div>
                 <h2 className="text-lg font-semibold text-gray-800">{driverData.name}</h2>
-                <p className="text-sm text-gray-600">{driverData.vehicleModel} - {driverData.vehicleNumber}</p>
+                <p className="text-sm text-gray-600">
+                  {driverData.vehicleModel} - {driverData.vehicleNumber}
+                </p>
                 <div className="flex items-center mt-1">
                   <span className="text-yellow-500 mr-1">★</span>
                   <span className="text-sm text-gray-600">{driverData.rating}</span>
@@ -198,7 +214,7 @@ export default function Tracking() {
             </div>
 
             {/* Temps d'arrivée avec animation */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
@@ -208,7 +224,7 @@ export default function Tracking() {
                 <FaClock className="w-5 h-5 text-blue-500" />
                 <div>
                   <p className="text-sm text-gray-600">Temps d'arrivée estimé</p>
-                  <motion.p 
+                  <motion.p
                     key={timeLeft}
                     initial={{ scale: 1.2 }}
                     animate={{ scale: 1 }}
@@ -226,7 +242,7 @@ export default function Tracking() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center justify-center space-x-2 p-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-                onClick={() => window.location.href = `tel:+1234567890`}
+                onClick={() => (window.location.href = `tel:+1234567890`)}
               >
                 <FaPhone className="w-5 h-5" />
                 <span>Appeler</span>
@@ -235,7 +251,7 @@ export default function Tracking() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center justify-center space-x-2 p-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-                onClick={() => window.location.href = `https://wa.me/1234567890`}
+                onClick={() => (window.location.href = `https://wa.me/1234567890`)}
               >
                 <FaWhatsapp className="w-5 h-5" />
                 <span>WhatsApp</span>
@@ -252,7 +268,7 @@ export default function Tracking() {
             >
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Course terminée</h2>
               <p className="text-gray-600 mb-4">Veuillez choisir votre méthode de paiement :</p>
-              
+
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -273,17 +289,19 @@ export default function Tracking() {
               className="bg-white rounded-lg shadow-lg p-6 mb-6"
             >
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Options de paiement</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Paiement avant le trajet */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium text-gray-700">Paiement avant le trajet</h3>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full p-4 rounded-lg flex items-center space-x-3 ${
-                      selectedPaymentMethod === 'wave' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-800'
+                      selectedPaymentMethod === 'wave'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 text-gray-800'
                     }`}
                     onClick={() => handlePaymentSelection('wave')}
                     disabled={isLoading}
@@ -296,7 +314,9 @@ export default function Tracking() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full p-4 rounded-lg flex items-center space-x-3 ${
-                      selectedPaymentMethod === 'orange' ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-800'
+                      selectedPaymentMethod === 'orange'
+                        ? 'bg-orange-500 text-white'
+                        : 'bg-gray-100 text-gray-800'
                     }`}
                     onClick={() => handlePaymentSelection('orange')}
                     disabled={isLoading}
@@ -309,7 +329,9 @@ export default function Tracking() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full p-4 rounded-lg flex items-center space-x-3 ${
-                      selectedPaymentMethod === 'cash' ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-800'
+                      selectedPaymentMethod === 'cash'
+                        ? 'bg-green-500 text-white'
+                        : 'bg-gray-100 text-gray-800'
                     }`}
                     onClick={() => handlePaymentSelection('cash')}
                     disabled={isLoading}
@@ -322,12 +344,14 @@ export default function Tracking() {
                 {/* Paiement après le trajet */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium text-gray-700">Paiement après le trajet</h3>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full p-4 rounded-lg flex items-center space-x-3 ${
-                      selectedPaymentMethod === 'whatsapp' ? 'bg-green-500 text-white' : 'bg-gray-100 text-gray-800'
+                      selectedPaymentMethod === 'whatsapp'
+                        ? 'bg-green-500 text-white'
+                        : 'bg-gray-100 text-gray-800'
                     }`}
                     onClick={() => handlePaymentSelection('whatsapp')}
                     disabled={isLoading}
@@ -338,7 +362,8 @@ export default function Tracking() {
 
                   <div className="p-4 bg-blue-50 rounded-lg">
                     <p className="text-sm text-gray-600">
-                      La facture vous sera envoyée par WhatsApp dans les 24 heures suivant votre trajet.
+                      La facture vous sera envoyée par WhatsApp dans les 24 heures suivant votre
+                      trajet.
                     </p>
                   </div>
                 </div>
@@ -367,7 +392,7 @@ export default function Tracking() {
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 200 }}
+                  transition={{ type: 'spring', stiffness: 200 }}
                   className="w-16 h-16 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center"
                 >
                   <FaStar className="w-8 h-8 text-white" />
@@ -375,9 +400,7 @@ export default function Tracking() {
                 <h2 className="text-2xl font-semibold text-gray-800 mb-2">
                   Merci pour votre confiance !
                 </h2>
-                <p className="text-gray-600">
-                  Votre paiement a été effectué avec succès.
-                </p>
+                <p className="text-gray-600">Votre paiement a été effectué avec succès.</p>
               </div>
 
               <motion.button
@@ -394,7 +417,7 @@ export default function Tracking() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full p-4 bg-gray-100 text-gray-800 rounded-lg flex items-center justify-center space-x-2"
-                onClick={() => window.location.href = '/'}
+                onClick={() => (window.location.href = '/')}
               >
                 <FaHistory className="w-5 h-5" />
                 <span>Retour à l'accueil</span>
@@ -409,9 +432,7 @@ export default function Tracking() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-lg shadow-lg p-6 mb-6"
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                Évaluez votre trajet
-              </h2>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">Évaluez votre trajet</h2>
 
               <div className="flex justify-center space-x-2 mb-6">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -424,7 +445,9 @@ export default function Tracking() {
                     }`}
                     onClick={() => setRating(star)}
                   >
-                    <FaStar className={`w-5 h-5 ${star <= rating ? 'text-white' : 'text-gray-400'}`} />
+                    <FaStar
+                      className={`w-5 h-5 ${star <= rating ? 'text-white' : 'text-gray-400'}`}
+                    />
                   </motion.button>
                 ))}
               </div>
@@ -444,14 +467,14 @@ export default function Tracking() {
                 onClick={handleRatingSubmit}
                 disabled={isLoading || rating === 0}
               >
-                {isLoading ? 'Envoi en cours...' : 'Envoyer l\'avis'}
+                {isLoading ? 'Envoi en cours...' : "Envoyer l'avis"}
               </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full p-4 bg-gray-100 text-gray-800 rounded-lg"
-                onClick={() => window.location.href = '/'}
+                onClick={() => (window.location.href = '/')}
               >
                 Retour à l'accueil
               </motion.button>
@@ -465,9 +488,7 @@ export default function Tracking() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-lg shadow-lg p-6"
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                Historique des trajets
-              </h2>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">Historique des trajets</h2>
 
               <div className="space-y-4">
                 {tripHistory.map((trip) => (
@@ -492,9 +513,7 @@ export default function Tracking() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500">
-                      Chauffeur: {trip.driver}
-                    </p>
+                    <p className="text-sm text-gray-500">Chauffeur: {trip.driver}</p>
                   </motion.div>
                 ))}
               </div>
@@ -516,21 +535,20 @@ export default function Tracking() {
 
       {/* Modal d'annulation */}
       {showCancelModal && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
         >
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="bg-white rounded-lg p-6 max-w-md w-full"
           >
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">
-              Annuler la course
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Annuler la course</h3>
             <p className="text-sm text-gray-600 mb-4">
-              Veuillez noter que l'annulation d'une course peut entraîner des frais selon les conditions de notre politique d'annulation.
+              Veuillez noter que l'annulation d'une course peut entraîner des frais selon les
+              conditions de notre politique d'annulation.
             </p>
             <textarea
               className="w-full p-3 border rounded-lg mb-4"
@@ -554,12 +572,12 @@ export default function Tracking() {
                 onClick={handleCancel}
                 disabled={isLoading}
               >
-                {isLoading ? 'Annulation en cours...' : 'Confirmer l\'annulation'}
+                {isLoading ? 'Annulation en cours...' : "Confirmer l'annulation"}
               </motion.button>
             </div>
           </motion.div>
         </motion.div>
       )}
     </div>
-  )
-} 
+  );
+}

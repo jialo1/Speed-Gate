@@ -68,4 +68,4 @@ export interface UpdateLocationRequest {
 export interface UpdatePromotionRequest {
   isActive?: boolean;
   validUntil?: string;
-} 
+}

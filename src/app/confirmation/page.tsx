@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import React from 'react'
-import Navbar from '@/components/Navbar'
-import { FaCheckCircle, FaShareAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React from 'react';
+import Navbar from '@/components/Navbar';
+import { FaCheckCircle, FaShareAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Confirmation() {
   const reservationDetails = {
@@ -15,18 +15,18 @@ export default function Confirmation() {
     vehicle: 'Confort',
     price: '15 000 FCFA',
     driver: 'Jean Dupont',
-    phone: '+221 77 123 45 67'
-  }
+    phone: '+221 77 123 45 67',
+  };
 
   const handleShare = (method: string) => {
     // Logique de partage à implémenter
-    console.log('Partage via:', method)
-  }
+    console.log('Partage via:', method);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <motion.div
@@ -37,12 +37,8 @@ export default function Confirmation() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaCheckCircle className="w-8 h-8 text-green-500" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
-              Réservation confirmée !
-            </h1>
-            <p className="text-gray-600">
-              Votre trajet a été confirmé avec succès
-            </p>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">Réservation confirmée !</h1>
+            <p className="text-gray-600">Votre trajet a été confirmé avec succès</p>
           </motion.div>
 
           <motion.div
@@ -50,9 +46,7 @@ export default function Confirmation() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-lg shadow-lg p-6 mb-6"
           >
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              Détails de la réservation
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Détails de la réservation</h2>
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span className="text-gray-600">Numéro de réservation</span>
@@ -60,11 +54,15 @@ export default function Confirmation() {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Date et heure</span>
-                <span className="font-medium">{reservationDetails.date} à {reservationDetails.time}</span>
+                <span className="font-medium">
+                  {reservationDetails.date} à {reservationDetails.time}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Trajet</span>
-                <span className="font-medium">{reservationDetails.from} → {reservationDetails.to}</span>
+                <span className="font-medium">
+                  {reservationDetails.from} → {reservationDetails.to}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Type de véhicule</span>
@@ -90,9 +88,7 @@ export default function Confirmation() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-lg shadow-lg p-6"
           >
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              Partager la réservation
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Partager la réservation</h2>
             <div className="grid grid-cols-2 gap-4">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -117,5 +113,5 @@ export default function Confirmation() {
         </div>
       </main>
     </div>
-  )
-} 
+  );
+}

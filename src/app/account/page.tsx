@@ -1,9 +1,18 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import { FaHistory, FaWhatsapp, FaPhone, FaTicketAlt, FaStar, FaCar, FaUser, FaMapMarkerAlt } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import {
+  FaHistory,
+  FaWhatsapp,
+  FaPhone,
+  FaTicketAlt,
+  FaStar,
+  FaCar,
+  FaUser,
+  FaMapMarkerAlt,
+} from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 // Données de test
 const userData = {
@@ -12,8 +21,8 @@ const userData = {
   phone: '+221 77 123 45 67',
   loyaltyPoints: 250,
   nextLevel: 500,
-  level: 'Bronze'
-}
+  level: 'Bronze',
+};
 
 const tripHistory = [
   {
@@ -24,7 +33,7 @@ const tripHistory = [
     driver: 'Jean Dupont',
     rating: 4.8,
     price: '15 000 FCFA',
-    status: 'completed'
+    status: 'completed',
   },
   {
     id: 2,
@@ -34,9 +43,9 @@ const tripHistory = [
     driver: 'Marie Fall',
     rating: 5.0,
     price: '8 000 FCFA',
-    status: 'completed'
-  }
-]
+    status: 'completed',
+  },
+];
 
 const promotions = [
   {
@@ -45,7 +54,7 @@ const promotions = [
     description: '10% de réduction sur votre 5ème trajet',
     progress: 3,
     total: 5,
-    expiry: '2024-04-30'
+    expiry: '2024-04-30',
   },
   {
     id: 2,
@@ -53,17 +62,17 @@ const promotions = [
     description: '15% de réduction sur votre premier trajet',
     progress: 0,
     total: 1,
-    expiry: '2024-04-15'
-  }
-]
+    expiry: '2024-04-15',
+  },
+];
 
 export default function Account() {
-  const [activeTab, setActiveTab] = useState('history')
+  const [activeTab, setActiveTab] = useState('history');
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* En-tête du profil */}
@@ -82,12 +91,14 @@ export default function Account() {
                 <div className="flex items-center mt-2">
                   <span className="text-sm text-gray-500">Niveau {userData.level}</span>
                   <div className="w-32 h-2 bg-gray-200 rounded-full mx-2">
-                    <div 
+                    <div
                       className="h-full bg-blue-500 rounded-full"
                       style={{ width: `${(userData.loyaltyPoints / userData.nextLevel) * 100}%` }}
                     ></div>
                   </div>
-                  <span className="text-sm text-gray-500">{userData.loyaltyPoints}/{userData.nextLevel} pts</span>
+                  <span className="text-sm text-gray-500">
+                    {userData.loyaltyPoints}/{userData.nextLevel} pts
+                  </span>
                 </div>
               </div>
             </div>
@@ -165,9 +176,7 @@ export default function Account() {
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <p className="text-sm text-gray-500">
-                      Chauffeur: {trip.driver}
-                    </p>
+                    <p className="text-sm text-gray-500">Chauffeur: {trip.driver}</p>
                     <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
                       Terminé
                     </span>
@@ -184,13 +193,13 @@ export default function Account() {
               className="bg-white rounded-lg shadow-lg p-6"
             >
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Support client</h2>
-              
+
               <div className="space-y-4">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full p-4 bg-green-500 text-white rounded-lg flex items-center justify-center space-x-2"
-                  onClick={() => window.location.href = 'https://wa.me/221771234567'}
+                  onClick={() => (window.location.href = 'https://wa.me/221771234567')}
                 >
                   <FaWhatsapp className="w-5 h-5" />
                   <span>Chat WhatsApp</span>
@@ -200,7 +209,7 @@ export default function Account() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full p-4 bg-blue-500 text-white rounded-lg flex items-center justify-center space-x-2"
-                  onClick={() => window.location.href = 'tel:+221771234567'}
+                  onClick={() => (window.location.href = 'tel:+221771234567')}
                 >
                   <FaPhone className="w-5 h-5" />
                   <span>Assistance téléphonique</span>
@@ -208,7 +217,8 @@ export default function Account() {
 
                 <div className="p-4 bg-blue-50 rounded-lg">
                   <p className="text-sm text-gray-600">
-                    Notre équipe est disponible 24/7 pour vous assister. Temps de réponse moyen : 5 minutes.
+                    Notre équipe est disponible 24/7 pour vous assister. Temps de réponse moyen : 5
+                    minutes.
                   </p>
                 </div>
               </div>
@@ -237,14 +247,16 @@ export default function Account() {
                       Valide jusqu'au {promo.expiry}
                     </span>
                   </div>
-                  
+
                   <div className="mt-4">
                     <div className="flex justify-between text-sm text-gray-600 mb-1">
                       <span>Progression</span>
-                      <span>{promo.progress}/{promo.total} trajets</span>
+                      <span>
+                        {promo.progress}/{promo.total} trajets
+                      </span>
                     </div>
                     <div className="w-full h-2 bg-gray-200 rounded-full">
-                      <div 
+                      <div
                         className="h-full bg-blue-500 rounded-full"
                         style={{ width: `${(promo.progress / promo.total) * 100}%` }}
                       ></div>
@@ -257,5 +269,5 @@ export default function Account() {
         </div>
       </main>
     </div>
-  )
-} 
+  );
+}

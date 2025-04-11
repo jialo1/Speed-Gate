@@ -1,56 +1,52 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import { FaStar, FaThumbsUp, FaThumbsDown } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import { FaStar, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Feedback() {
-  const [rating, setRating] = useState(0)
-  const [hoverRating, setHoverRating] = useState(0)
-  const [comment, setComment] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [comment, setComment] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const tripDetails = {
     date: '15 Avril 2024',
     from: 'Aéroport Blaise Diagne',
     to: 'Hôtel Terrou-Bi',
-    driver: 'Jean Dupont'
-  }
+    driver: 'Jean Dupont',
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
+    e.preventDefault();
+    setIsSubmitting(true);
+
     try {
       // Logique de soumission à implémenter
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      console.log('Feedback soumis:', { rating, comment })
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('Feedback soumis:', { rating, comment });
     } catch (error) {
-      console.error('Erreur lors de la soumission:', error)
+      console.error('Erreur lors de la soumission:', error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-8">
-            Évaluer votre trajet
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-8">Évaluer votre trajet</h1>
 
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-lg shadow-lg p-6 mb-6"
           >
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              Détails du trajet
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Détails du trajet</h2>
             <div className="space-y-2">
               <p className="text-gray-600">
                 <span className="font-medium">Date:</span> {tripDetails.date}
@@ -70,10 +66,8 @@ export default function Feedback() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-lg shadow-lg p-6 mb-6"
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                Notez votre expérience
-              </h2>
-              
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">Notez votre expérience</h2>
+
               <div className="flex justify-center space-x-2 mb-6">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -86,9 +80,7 @@ export default function Feedback() {
                   >
                     <FaStar
                       className={`w-8 h-8 ${
-                        star <= (hoverRating || rating)
-                          ? 'text-yellow-400'
-                          : 'text-gray-300'
+                        star <= (hoverRating || rating) ? 'text-yellow-400' : 'text-gray-300'
                       }`}
                     />
                   </button>
@@ -96,10 +88,7 @@ export default function Feedback() {
               </div>
 
               <div className="mb-6">
-                <label
-                  htmlFor="comment"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
+                <label htmlFor="comment" className="block text-sm font-medium text-gray-700 mb-2">
                   Commentaire (optionnel)
                 </label>
                 <textarea
@@ -144,12 +133,12 @@ export default function Feedback() {
                     : 'bg-blue-500 hover:bg-blue-600'
                 }`}
               >
-                {isSubmitting ? 'Envoi en cours...' : 'Envoyer l\'évaluation'}
+                {isSubmitting ? 'Envoi en cours...' : "Envoyer l'évaluation"}
               </motion.button>
             </motion.div>
           </form>
         </div>
       </main>
     </div>
-  )
-} 
+  );
+}

@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Navbar from '@/components/Navbar'
-import { FaCar, FaCalendarAlt, FaClock, FaUser, FaMapMarkerAlt } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import { FaCar, FaCalendarAlt, FaClock, FaUser, FaMapMarkerAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Reservation() {
   const [formData, setFormData] = useState({
@@ -12,8 +12,8 @@ export default function Reservation() {
     date: '',
     time: '',
     passengers: 1,
-    vehicleType: 'standard'
-  })
+    vehicleType: 'standard',
+  });
 
   const popularDestinations = [
     { name: 'Aéroport Blaise Diagne', icon: <FaMapMarkerAlt /> },
@@ -21,8 +21,8 @@ export default function Reservation() {
     { name: 'Université Cheikh Anta Diop', icon: <FaMapMarkerAlt /> },
     { name: 'Gare Routière de Dakar', icon: <FaMapMarkerAlt /> },
     { name: 'Plateau', icon: <FaMapMarkerAlt /> },
-    { name: 'Almadies', icon: <FaMapMarkerAlt /> }
-  ]
+    { name: 'Almadies', icon: <FaMapMarkerAlt /> },
+  ];
 
   const vehicleTypes = [
     {
@@ -30,47 +30,43 @@ export default function Reservation() {
       name: 'Standard',
       description: 'Véhicule confortable pour 4 passagers',
       price: '5 000 FCFA',
-      icon: <FaCar />
+      icon: <FaCar />,
     },
     {
       id: 'comfort',
       name: 'Confort',
       description: 'Véhicule haut de gamme pour 4 passagers',
       price: '7 500 FCFA',
-      icon: <FaCar />
+      icon: <FaCar />,
     },
     {
       id: 'van',
       name: 'Van',
       description: 'Grand véhicule pour 7 passagers',
       price: '10 000 FCFA',
-      icon: <FaCar />
-    }
-  ]
+      icon: <FaCar />,
+    },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Logique de réservation à implémenter
-    console.log('Données du formulaire:', formData)
-  }
+    console.log('Données du formulaire:', formData);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-8">
-            Réserver un trajet
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-800 mb-8">Réserver un trajet</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="bg-white rounded-lg shadow-lg p-6">
-                  <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                    Détails du trajet
-                  </h2>
+                  <h2 className="text-xl font-semibold text-gray-800 mb-4">Détails du trajet</h2>
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -100,9 +96,7 @@ export default function Reservation() {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Date
-                        </label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
                         <div className="relative">
                           <input
                             type="date"
@@ -140,7 +134,9 @@ export default function Reservation() {
                           min="1"
                           max="7"
                           value={formData.passengers}
-                          onChange={(e) => setFormData({ ...formData, passengers: parseInt(e.target.value) })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, passengers: parseInt(e.target.value) })
+                          }
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pl-10"
                           required
                         />
@@ -151,9 +147,7 @@ export default function Reservation() {
                 </div>
 
                 <div className="bg-white rounded-lg shadow-lg p-6">
-                  <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                    Type de véhicule
-                  </h2>
+                  <h2 className="text-xl font-semibold text-gray-800 mb-4">Type de véhicule</h2>
                   <div className="space-y-4">
                     {vehicleTypes.map((vehicle) => (
                       <motion.button
@@ -205,9 +199,9 @@ export default function Reservation() {
                       className="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-50 flex items-center space-x-2"
                       onClick={() => {
                         if (index % 2 === 0) {
-                          setFormData({ ...formData, pickup: destination.name })
+                          setFormData({ ...formData, pickup: destination.name });
                         } else {
-                          setFormData({ ...formData, dropoff: destination.name })
+                          setFormData({ ...formData, dropoff: destination.name });
                         }
                       }}
                     >
@@ -246,5 +240,5 @@ export default function Reservation() {
         </div>
       </main>
     </div>
-  )
-} 
+  );
+}
