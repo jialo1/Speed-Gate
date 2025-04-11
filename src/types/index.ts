@@ -112,3 +112,4 @@ export interface AppSettings {
 }
 
 export * from './api';
+export * from './api.d';

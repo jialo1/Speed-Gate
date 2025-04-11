@@ -1,5 +1,6 @@
 // Exemples d'utilisation des API
 
+import { NextResponse } from 'next/server';
 import type {
   ApiError,
   ApiResponse,
@@ -8,7 +9,7 @@ import type {
   CreateDriverRequest,
   CreatePromotionRequest,
   UpdateLocationRequest,
-  UpdatePromotionRequest,
+  UpdatePromotionRequest
 } from '@/types';
 
 // 1. Gestion des utilisateurs
